@@ -1,4 +1,6 @@
 import React, { useState, Fragment } from "react";
+import { CREATE_USER } from "../../graphql/Mutation";
+import { useMutation } from "@apollo/client";
 
 import AddBirthdayDetailForm from "./BirthdayDetail";
 import AddContactDetailForm from "./ContactDetail";
@@ -10,17 +12,15 @@ export default function Form() {
   const [addNameDetail, setAddNameDetail] = useState({});
   const [addBirthdayDetail, setAddBirthdayDetail] = useState({});
   const [addContactDetail, setAddContactDetail] = useState({});
+  const [createUser, { error }] = useMutation(CREATE_USER);
+
+  const date = `${addBirthdayDetail.day} ${addBirthdayDetail.month} ${addBirthdayDetail.year} `;
+  console.log(date);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const newUser = { addNameDetail, addBirthdayDetail, addContactDetail };
-      alert(
-        `\nDATOS ENVIADOS\n\nNombre: ${addNameDetail.firstName} ${addNameDetail.paternalSurname} ${addNameDetail.maternalSurname}\nFecha de nacimiento: ${addBirthdayDetail.day} ${addBirthdayDetail.month} ${addBirthdayDetail.year}\nCorreo electrónico: ${addContactDetail.email}\nTeléfono celular: ${addContactDetail.phone}`
-      );
-    } catch (error) {
-      console.log(error);
-    }
+    alert(
+      `\nDATOS ENVIADOS\n\nNombre: ${addNameDetail.firstName} ${addNameDetail.paternalSurname} ${addNameDetail.maternalSurname}\nFecha de nacimiento: ${addBirthdayDetail.day} ${addBirthdayDetail.month} ${addBirthdayDetail.year}\nCorreo electrónico: ${addContactDetail.email}\nTeléfono celular: ${addContactDetail.phone}`
+    );
   };
 
   return (
@@ -42,8 +42,20 @@ export default function Form() {
           />
           <button
             className="btn btn-lg btn-block mt-4 buttonStyle"
-            type="submit"
-            onClick={handleSubmit}
+            onClick={() => {
+              createUser({
+                variables: {
+                  Nombre: addNameDetail.firstName,
+                  Segundo_Nombre: addNameDetail.secondName,
+                  Apellido_Paterno: addNameDetail.paternalSurname,
+                  Apellido_Materno: addNameDetail.maternalSurname,
+                  Fecha_Nacimiento: date,
+                  Email: addContactDetail.email,
+                  Telefono: addContactDetail.phone,
+                },
+              });
+              handleSubmit();
+            }}
           >
             Iniciar
           </button>
