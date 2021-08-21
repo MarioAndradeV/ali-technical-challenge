@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CustomInput from "./CustomInput";
 import logo from "../../assets/logo.jpg";
