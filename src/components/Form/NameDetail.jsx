@@ -1,21 +1,9 @@
-import React, { useState } from "react";
-
-// import { useHistory } from "react-router";
-// import { register } from "../../services";
+import React from "react";
 
 import CustomInput from "./CustomInput";
-// Services
-// import { postPost } from "../../services";
 import logo from "../../assets/logo.jpg";
 
 export default function AddNameDetail({ setName, fullName }) {
-  // const [firstName, setFirstName] = useState("");
-  // const [secondName, setSecondName] = useState("");
-  // const [paternalSurname, setPaternalSurname] = useState("");
-  // const [maternalSurname, setMaternalSurname] = useState("");
-
-  // const history = useHistory();
-
   function handleOnChange(event) {
     setName({ ...fullName, [event.target.name]: event.target.value });
   }

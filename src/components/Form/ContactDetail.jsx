@@ -1,20 +1,9 @@
 import React, { useState } from "react";
 
-// import { useHistory } from "react-router";
-// import { register } from "../../services";
-
 import CustomInput from "./CustomInput";
-// Services
-// import { postPost } from "../../services";
 import logo from "../../assets/logo.jpg";
 
 export default function AddContactDetail({ setContactDetail, fullContact }) {
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState("");
-
-  // const history = useHistory();
-
-  //Condition Rendering
   function handleOnChange(event) {
     setContactDetail({
       ...fullContact,

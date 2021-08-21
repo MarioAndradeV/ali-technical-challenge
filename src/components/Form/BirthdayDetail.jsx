@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 
-// import { useHistory } from "react-router";
-//import { register } from "../../services";
-
 import CustomInput from "./CustomInput";
-// Services
-// import { postPost } from "../../services";
 import logo from "../../assets/logo.jpg";
 
 export default function AddBirthdayDetail({ setBirthday, fullDay }) {
-  // const [day, setDay] = useState("");
-  // const [month, setMonth] = useState("");
-  // const [year, setYear] = useState("");
-
-  // const history = useHistory();
   function handleOnChange(event) {
     setBirthday({ ...fullDay, [event.target.name]: event.target.value });
   }
-
   const renderSpan = () => {
     if (fullDay.day && fullDay.month && fullDay.year) {
       return (
@@ -29,7 +18,6 @@ export default function AddBirthdayDetail({ setBirthday, fullDay }) {
       return null;
     }
   };
-
   return (
     <React.Fragment>
       <div className="d-flex">

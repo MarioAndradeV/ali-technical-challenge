@@ -1,11 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-// import { useHistory } from "react-router";
-// import { register } from "../../services";
-
-import CustomInput from "./CustomInput";
-// Services
-// import { postPost } from "../../services";
 import logo2 from "../../assets/logo2.png";
 
 export default function AddHeader() {
